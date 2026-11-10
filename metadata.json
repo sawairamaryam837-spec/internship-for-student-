@@ -1,0 +1,6 @@
+{
+  "name": "CertOfThings – Internship Discovery Portal",
+  "description": "Premium dark-themed internship exploration, domain-tailored applications, real-time application pipeline tracking, and automated offer letters.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
