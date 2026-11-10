@@ -107,7 +107,8 @@ function onFormSubmit(e) {
 
           <button
             onClick={() => setIsGoogleFormsModalOpen(false)}
-            className="p-1.5 rounded-xl border border-purple-900/40 bg-[#16182a] text-slate-400 hover:text-white"
+            aria-label="Close Google Forms modal"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-purple-900/40 bg-[#16182a] text-slate-400 hover:text-white active:scale-95 transition-all"
           >
             <X className="h-5 w-5" />
           </button>
@@ -160,7 +161,7 @@ function onFormSubmit(e) {
             <button
               onClick={handleSimulateSync}
               disabled={isSyncing}
-              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:brightness-110 px-5 py-2.5 font-bold text-white shadow-lg shadow-purple-950/40 transition-all shrink-0 disabled:opacity-50"
+              className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:brightness-110 px-5 py-3 min-h-[46px] font-bold text-white shadow-lg shadow-purple-950/40 active:scale-95 transition-all shrink-0 disabled:opacity-50 w-full sm:w-auto"
             >
               <RefreshCw className={`h-4 w-4 ${isSyncing ? 'animate-spin' : ''}`} />
               <span>{isSyncing ? 'Ingesting Payload...' : 'Simulate Google Form Submit'}</span>
@@ -180,7 +181,7 @@ function onFormSubmit(e) {
                 value={formUrl}
                 onChange={e => setFormUrl(e.target.value)}
                 required
-                className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+                className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none"
               />
             </div>
 
@@ -191,14 +192,14 @@ function onFormSubmit(e) {
                 value={webhookSecret}
                 onChange={e => setWebhookSecret(e.target.value)}
                 required
-                className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 font-mono text-purple-300 focus:border-purple-500 focus:outline-none"
+                className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] font-mono text-purple-300 focus:border-purple-500 focus:outline-none"
               />
             </div>
 
             <div className="flex justify-end">
               <button
                 type="submit"
-                className="rounded-xl bg-purple-600 hover:bg-purple-500 px-4 py-2 font-semibold text-white transition-colors"
+                className="min-h-[44px] rounded-xl bg-purple-600 hover:bg-purple-500 px-6 py-2.5 font-semibold text-white active:scale-95 transition-all w-full sm:w-auto text-center"
               >
                 Save Settings
               </button>

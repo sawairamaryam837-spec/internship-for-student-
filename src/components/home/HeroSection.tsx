@@ -26,37 +26,39 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-6">
-          {/* Subtle Editorial Kicker - no pills, clean text with separators */}
-          <div className="inline-flex items-center gap-2 text-xs font-medium text-purple-300 bg-purple-950/60 border border-purple-800/40 px-3.5 py-1.5 rounded-full backdrop-blur-md">
-            <span>Official Admissions 2026/2027</span>
-            <span aria-hidden="true" className="text-purple-600">·</span>
+          {/* Subtle Editorial Kicker - wraps safely on mobile */}
+          <div className="inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-medium text-purple-300 bg-purple-950/60 border border-purple-800/40 px-3.5 py-1.5 rounded-full backdrop-blur-md max-w-full">
+            <span>Admissions 2026/2027</span>
+            <span aria-hidden="true" className="text-purple-600 hidden xs:inline">·</span>
             <span>20 Technical Domains</span>
-            <span aria-hidden="true" className="text-purple-600">·</span>
-            <span>Verified PDF Offer Letters</span>
+            <span aria-hidden="true" className="text-purple-600 hidden xs:inline">·</span>
+            <span>Verified PDF Offers</span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white text-balance leading-[1.12]">
+          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white text-balance leading-[1.15] sm:leading-[1.12]">
             Elite Internship Discovery & Candidate Application Portal
           </h1>
 
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed px-2">
             Discover rigorously curated technical internships across 20 specialized engineering domains. Submit tailored domain applications, track your real-time recruitment pipeline, and receive authenticated offer letters.
           </p>
 
-          {/* Search Bar matching screenshot aesthetic */}
-          <form onSubmit={handleSearchSubmit} className="max-w-xl mx-auto pt-2">
-            <div className="relative flex items-center rounded-xl border border-purple-800/40 bg-[#121422]/90 p-1.5 shadow-2xl shadow-purple-950/50 backdrop-blur-lg focus-within:border-purple-500/80 transition-all">
-              <Search className="h-5 w-5 text-purple-400 ml-3 shrink-0" />
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-                placeholder="Search by role or domain (e.g. React, Machine Learning, Cybersecurity)..."
-                className="w-full bg-transparent px-3 py-2 text-sm text-white placeholder-slate-400 focus:outline-none"
-              />
+          {/* Search Bar - Responsive stack on extra small screens */}
+          <form onSubmit={handleSearchSubmit} className="max-w-xl mx-auto pt-2 px-2 sm:px-0">
+            <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center rounded-2xl sm:rounded-xl border border-purple-800/40 bg-[#121422]/95 p-2 sm:p-1.5 shadow-2xl shadow-purple-950/50 backdrop-blur-lg focus-within:border-purple-500/80 gap-2 sm:gap-0 transition-all">
+              <div className="flex items-center flex-1 min-h-[44px] px-2">
+                <Search className="h-5 w-5 text-purple-400 shrink-0" />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={e => setSearchTerm(e.target.value)}
+                  placeholder="Search role or domain (React, AI, Cloud)..."
+                  className="w-full bg-transparent px-3 py-2 text-base sm:text-sm text-white placeholder-slate-400 focus:outline-none"
+                />
+              </div>
               <button
                 type="submit"
-                className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-purple-900/30 hover:brightness-110 transition-all shrink-0 whitespace-nowrap"
+                className="flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-2.5 text-xs font-semibold text-white shadow-md shadow-purple-900/30 hover:brightness-110 active:scale-[0.98] transition-all shrink-0 whitespace-nowrap"
               >
                 <span>Find Roles</span>
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -65,22 +67,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSearch }) => {
           </form>
 
           {/* Quick Metrics strip with tabular numbers */}
-          <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto text-left">
-            <div className="rounded-xl border border-purple-900/30 bg-[#0e101b]/80 p-3.5">
-              <div className="font-mono text-xl font-bold text-white tabular-nums">20</div>
-              <div className="text-xs text-slate-400">Technical Domains</div>
+          <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 max-w-3xl mx-auto text-left px-2 sm:px-0">
+            <div className="rounded-xl border border-purple-900/30 bg-[#0e101b]/80 p-3 sm:p-3.5">
+              <div className="font-mono text-lg sm:text-xl font-bold text-white tabular-nums">20</div>
+              <div className="text-[11px] sm:text-xs text-slate-400">Technical Domains</div>
             </div>
-            <div className="rounded-xl border border-purple-900/30 bg-[#0e101b]/80 p-3.5">
-              <div className="font-mono text-xl font-bold text-purple-400 tabular-nums">1,927</div>
-              <div className="text-xs text-slate-400">Placements & Recruits</div>
+            <div className="rounded-xl border border-purple-900/30 bg-[#0e101b]/80 p-3 sm:p-3.5">
+              <div className="font-mono text-lg sm:text-xl font-bold text-purple-400 tabular-nums">1,927</div>
+              <div className="text-[11px] sm:text-xs text-slate-400">Recruits Placed</div>
             </div>
-            <div className="rounded-xl border border-purple-900/30 bg-[#0e101b]/80 p-3.5">
-              <div className="font-mono text-xl font-bold text-white tabular-nums">100%</div>
-              <div className="text-xs text-slate-400">Verified QR Certificates</div>
+            <div className="rounded-xl border border-purple-900/30 bg-[#0e101b]/80 p-3 sm:p-3.5">
+              <div className="font-mono text-lg sm:text-xl font-bold text-white tabular-nums">100%</div>
+              <div className="text-[11px] sm:text-xs text-slate-400">Verified QR Badges</div>
             </div>
-            <div className="rounded-xl border border-purple-900/30 bg-[#0e101b]/80 p-3.5">
-              <div className="font-mono text-xl font-bold text-emerald-400 tabular-nums">3-5 Days</div>
-              <div className="text-xs text-slate-400">Average Review Time</div>
+            <div className="rounded-xl border border-purple-900/30 bg-[#0e101b]/80 p-3 sm:p-3.5">
+              <div className="font-mono text-lg sm:text-xl font-bold text-emerald-400 tabular-nums">3-5 Days</div>
+              <div className="text-[11px] sm:text-xs text-slate-400">Avg Review Time</div>
             </div>
           </div>
         </div>

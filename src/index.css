@@ -12,6 +12,21 @@
     font-family: var(--font-sans);
     background-color: #080a0f;
     color: #e2e8f0;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  /* Prevent 300ms mobile tap delay and accidental double-tap zoom misclicks */
+  button, a, input, select, textarea {
+    touch-action: manipulation;
   }
 
   h1, h2, h3, h4, h5, h6 {

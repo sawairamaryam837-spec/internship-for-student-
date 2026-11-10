@@ -57,7 +57,8 @@ export const InternshipDetailModal: React.FC = () => {
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={() => toggleSaveInternship(selectedInternship.id)}
-                className={`p-2 rounded-xl border transition-colors ${
+                aria-label={isSaved ? 'Remove bookmark' : 'Bookmark track'}
+                className={`flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl border active:scale-95 transition-all ${
                   isSaved
                     ? 'border-purple-600 bg-purple-950/80 text-purple-400'
                     : 'border-purple-900/40 bg-[#121422] text-slate-400 hover:text-white'
@@ -68,7 +69,8 @@ export const InternshipDetailModal: React.FC = () => {
               </button>
               <button
                 onClick={() => setSelectedInternship(null)}
-                className="p-2 rounded-xl border border-purple-900/40 bg-[#121422] text-slate-400 hover:text-white transition-colors"
+                aria-label="Close details"
+                className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-xl border border-purple-900/40 bg-[#121422] text-slate-400 hover:text-white active:scale-95 transition-all"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -111,7 +113,7 @@ export const InternshipDetailModal: React.FC = () => {
         </div>
 
         {/* Content Body */}
-        <div className="p-6 sm:p-8 space-y-8 max-h-[60vh] overflow-y-auto">
+        <div className="p-5 sm:p-8 space-y-6 sm:space-y-8 max-h-[60vh] overflow-y-auto">
           {/* Overview */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-wider text-purple-400 mb-2">
@@ -146,7 +148,7 @@ export const InternshipDetailModal: React.FC = () => {
               {selectedInternship.requiredSkills.map(skill => (
                 <span
                   key={skill}
-                  className="rounded-lg border border-purple-900/40 bg-[#16192e] px-3 py-1 text-xs font-mono text-purple-200"
+                  className="rounded-lg border border-purple-900/40 bg-[#16192e] px-3 py-1.5 text-xs font-mono text-purple-200"
                 >
                   {skill}
                 </span>
@@ -195,8 +197,8 @@ export const InternshipDetailModal: React.FC = () => {
         </div>
 
         {/* Modal Footer CTAs */}
-        <div className="border-t border-purple-950/80 bg-[#0c0e18] p-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs text-slate-400">
+        <div className="border-t border-purple-950/80 bg-[#0c0e18] p-4 sm:p-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+          <div className="text-xs text-slate-400 text-center sm:text-left">
             {selectedInternship.isDemoListing && (
               <span className="font-mono text-purple-400 text-[11px]">
                 Demo recruitment track for CertOfThings admissions testing.
@@ -204,13 +206,13 @@ export const InternshipDetailModal: React.FC = () => {
             )}
           </div>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             {selectedInternship.googleFormUrl && (
               <a
                 href={selectedInternship.googleFormUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-1.5 rounded-xl border border-purple-800/50 bg-[#141728] px-4 py-2.5 text-xs font-medium text-slate-300 hover:text-white transition-colors w-full sm:w-auto"
+                className="flex items-center justify-center gap-1.5 rounded-xl border border-purple-800/50 bg-[#141728] px-4 py-3 min-h-[44px] text-xs font-medium text-slate-300 hover:text-white active:scale-95 transition-all w-full sm:w-auto"
               >
                 <span>Google Form Version</span>
                 <ExternalLink className="h-3.5 w-3.5" />
@@ -219,7 +221,7 @@ export const InternshipDetailModal: React.FC = () => {
 
             <button
               onClick={handleApplyClick}
-              className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:brightness-110 px-6 py-2.5 text-xs font-semibold text-white shadow-lg shadow-purple-900/40 transition-all w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 hover:brightness-110 px-6 py-3 min-h-[46px] text-xs font-semibold text-white shadow-lg shadow-purple-900/40 active:scale-95 transition-all w-full sm:w-auto"
             >
               <span>Apply For This Track</span>
               <ArrowRight className="h-4 w-4" />

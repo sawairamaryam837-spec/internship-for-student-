@@ -98,55 +98,55 @@ export const AdminDashboard: React.FC = () => {
     <div className="py-6 pb-20">
       <div className="mx-auto max-w-[1520px] px-4 sm:px-6 lg:px-8">
         {/* Outer Dashboard Shell matching Rokett.co Screenshot #1 */}
-        <div className="rounded-3xl border border-purple-900/40 bg-[#0c0d16] p-4 sm:p-6 lg:p-8 shadow-2xl shadow-purple-950/60 overflow-hidden">
+        <div className="rounded-2xl sm:rounded-3xl border border-purple-900/40 bg-[#0c0d16] p-3.5 sm:p-6 lg:p-8 shadow-2xl shadow-purple-950/60 overflow-hidden">
           {/* Top Rokett.co style header */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-purple-950/60">
             {/* Left brand & search */}
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
               <div className="flex items-center gap-2">
                 <div className="h-4 w-4 rounded-full bg-gradient-to-r from-pink-500 to-purple-600" />
-                <span className="font-display text-lg font-bold text-white tracking-tight">
+                <span className="font-display text-base sm:text-lg font-bold text-white tracking-tight">
                   rokett.co <span className="text-xs font-mono text-purple-400">/ admin</span>
                 </span>
               </div>
 
-              {/* Search bar */}
-              <div className="relative hidden sm:block w-72">
+              {/* Search bar - accessible on both mobile and desktop */}
+              <div className="relative w-full sm:w-72">
                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   placeholder="Search candidates, ID, university..."
-                  className="w-full rounded-xl border border-purple-900/40 bg-[#141525] pl-10 pr-4 py-2 text-xs text-white placeholder-slate-400 focus:border-purple-500 focus:outline-none"
+                  className="w-full min-h-[44px] rounded-xl border border-purple-900/40 bg-[#141525] pl-10 pr-4 py-2.5 text-base sm:text-xs text-white placeholder-slate-400 focus:border-purple-500 focus:outline-none"
                 />
               </div>
             </div>
 
             {/* Right actions */}
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
               <button
                 onClick={() => setIsGoogleFormsModalOpen(true)}
-                className="flex items-center gap-1.5 rounded-xl border border-purple-800/40 bg-[#16172a] hover:bg-[#1e2038] px-3.5 py-2 text-xs font-semibold text-purple-300 transition-colors"
+                className="flex min-h-[40px] items-center gap-1.5 rounded-xl border border-purple-800/40 bg-[#16172a] hover:bg-[#1e2038] px-3.5 py-2 text-xs font-semibold text-purple-300 transition-colors active:scale-95"
               >
                 <RefreshCw className="h-3.5 w-3.5" />
-                <span>Google Forms Webhook</span>
+                <span>Forms Webhook</span>
               </button>
 
               <button
                 onClick={exportApplicationsCSV}
-                className="flex items-center gap-1.5 rounded-xl border border-purple-800/40 bg-[#16172a] hover:bg-[#1e2038] px-3.5 py-2 text-xs font-semibold text-slate-200 transition-colors"
+                className="flex min-h-[40px] items-center gap-1.5 rounded-xl border border-purple-800/40 bg-[#16172a] hover:bg-[#1e2038] px-3.5 py-2 text-xs font-semibold text-slate-200 transition-colors active:scale-95"
               >
                 <Download className="h-3.5 w-3.5" />
                 <span>Export CSV</span>
               </button>
 
               {/* Admin Profile pill matching screenshot 1 */}
-              <div className="flex items-center gap-2.5 rounded-xl border border-purple-900/40 bg-[#141525] px-3 py-1.5">
+              <div className="flex min-h-[40px] items-center gap-2.5 rounded-xl border border-purple-900/40 bg-[#141525] px-3 py-1.5">
                 <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-pink-500/20 text-pink-300 font-bold text-xs">
                   A
                 </div>
-                <div className="text-left hidden sm:block">
+                <div className="text-left">
                   <div className="text-xs font-bold text-white">Hello! Anglina</div>
                   <div className="text-[10px] text-purple-400 font-mono">Head Recruiter</div>
                 </div>
@@ -156,14 +156,14 @@ export const AdminDashboard: React.FC = () => {
 
           {/* Main Layout: Left Sidebar + Right Body */}
           <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Sidebar matching screenshot 1 */}
-            <div className="lg:col-span-2 space-y-1">
+            {/* Sidebar matching screenshot 1 - Horizontal on mobile, vertical on desktop */}
+            <div className="lg:col-span-2 flex lg:flex-col overflow-x-auto pb-2 lg:pb-0 gap-1.5 scrollbar-none">
               <button
                 onClick={() => setActiveSidebar('dashboard')}
-                className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`min-h-[42px] whitespace-nowrap flex items-center gap-2.5 sm:gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all active:scale-95 ${
                   activeSidebar === 'dashboard'
                     ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-900/30'
-                    : 'text-slate-400 hover:text-white hover:bg-[#141627]'
+                    : 'text-slate-400 hover:text-white hover:bg-[#141627] border border-purple-950/40 lg:border-transparent'
                 }`}
               >
                 <LayoutDashboard className="h-4 w-4" />
@@ -172,10 +172,10 @@ export const AdminDashboard: React.FC = () => {
 
               <button
                 onClick={() => setActiveSidebar('category')}
-                className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`min-h-[42px] whitespace-nowrap flex items-center gap-2.5 sm:gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all active:scale-95 ${
                   activeSidebar === 'category'
                     ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-900/30'
-                    : 'text-slate-400 hover:text-white hover:bg-[#141627]'
+                    : 'text-slate-400 hover:text-white hover:bg-[#141627] border border-purple-950/40 lg:border-transparent'
                 }`}
               >
                 <FolderKanban className="h-4 w-4" />
@@ -184,10 +184,10 @@ export const AdminDashboard: React.FC = () => {
 
               <button
                 onClick={() => setActiveSidebar('applicants')}
-                className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`min-h-[42px] whitespace-nowrap flex items-center gap-2.5 sm:gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all active:scale-95 ${
                   activeSidebar === 'applicants'
                     ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-900/30'
-                    : 'text-slate-400 hover:text-white hover:bg-[#141627]'
+                    : 'text-slate-400 hover:text-white hover:bg-[#141627] border border-purple-950/40 lg:border-transparent'
                 }`}
               >
                 <Users className="h-4 w-4" />
@@ -196,7 +196,7 @@ export const AdminDashboard: React.FC = () => {
 
               <button
                 onClick={() => setIsEmailLogOpen(true)}
-                className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#141627] transition-all"
+                className="min-h-[42px] whitespace-nowrap flex items-center gap-2.5 sm:gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#141627] transition-all border border-purple-950/40 lg:border-transparent active:scale-95"
               >
                 <Mail className="h-4 w-4" />
                 <span>Email Outbox</span>
@@ -204,7 +204,7 @@ export const AdminDashboard: React.FC = () => {
 
               <button
                 onClick={() => setIsGoogleFormsModalOpen(true)}
-                className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#141627] transition-all"
+                className="min-h-[42px] whitespace-nowrap flex items-center gap-2.5 sm:gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-[#141627] transition-all border border-purple-950/40 lg:border-transparent active:scale-95"
               >
                 <Sliders className="h-4 w-4" />
                 <span>Forms Patcher</span>
@@ -465,7 +465,7 @@ export const AdminDashboard: React.FC = () => {
                           value={statusFilter}
                           onChange={e => setStatusFilter(e.target.value)}
                           aria-label="Filter applicants by status"
-                          className="rounded-xl border border-purple-900/40 bg-[#17192c] px-3 py-1.5 text-xs text-slate-200 focus:border-purple-500 focus:outline-none"
+                          className="min-h-[40px] rounded-xl border border-purple-900/40 bg-[#17192c] px-3 py-1.5 text-base sm:text-xs text-slate-200 focus:border-purple-500 focus:outline-none"
                         >
                           <option value="all">All Statuses ({applications.length})</option>
                           <option value="submitted">Submitted</option>
@@ -482,9 +482,9 @@ export const AdminDashboard: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Table Surface */}
-                    <div className="overflow-x-auto">
-                      <table className="w-full text-left text-xs">
+                    {/* Table Surface - Scrollable with min-w-850 to preserve layout on mobile */}
+                    <div className="overflow-x-auto -mx-2 sm:mx-0">
+                      <table className="w-full text-left text-xs min-w-[850px]">
                         <thead>
                           <tr className="border-b border-purple-950/80 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                             <th className="py-3 px-4">Candidate #</th>
@@ -554,49 +554,51 @@ export const AdminDashboard: React.FC = () => {
                                 </span>
                               </td>
 
-                              {/* Actions */}
-                              <td className="py-3.5 px-4 text-right space-x-2">
-                                {/* Shortlist button */}
-                                {app.status === 'submitted' && (
-                                  <button
-                                    onClick={() => updateApplicationStatus(app.id, 'shortlisted')}
-                                    className="px-2 py-1 rounded-lg bg-purple-950 hover:bg-purple-900 border border-purple-700/50 text-[11px] font-semibold text-purple-300 transition-colors"
-                                  >
-                                    Shortlist
-                                  </button>
-                                )}
+                              {/* Actions with distinct touch-friendly targets */}
+                              <td className="py-3.5 px-4 text-right">
+                                <div className="flex items-center justify-end gap-1.5">
+                                  {/* Shortlist button */}
+                                  {app.status === 'submitted' && (
+                                    <button
+                                      onClick={() => updateApplicationStatus(app.id, 'shortlisted')}
+                                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-purple-950 hover:bg-purple-900 border border-purple-700/50 text-[11px] font-semibold text-purple-300 active:scale-95 transition-all"
+                                    >
+                                      Shortlist
+                                    </button>
+                                  )}
 
-                                {/* Interview button */}
-                                {app.status !== 'interview_scheduled' && app.status !== 'offer_issued' && app.status !== 'rejected' && (
-                                  <button
-                                    onClick={() => setScheduleInterviewApp(app)}
-                                    className="px-2 py-1 rounded-lg bg-amber-950/80 hover:bg-amber-900/80 border border-amber-700/50 text-[11px] font-semibold text-amber-300 transition-colors"
-                                  >
-                                    Interview
-                                  </button>
-                                )}
+                                  {/* Interview button */}
+                                  {app.status !== 'interview_scheduled' && app.status !== 'offer_issued' && app.status !== 'rejected' && (
+                                    <button
+                                      onClick={() => setScheduleInterviewApp(app)}
+                                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-amber-950/80 hover:bg-amber-900/80 border border-amber-700/50 text-[11px] font-semibold text-amber-300 active:scale-95 transition-all"
+                                    >
+                                      Interview
+                                    </button>
+                                  )}
 
-                                {/* Issue Offer button */}
-                                {app.status !== 'offer_issued' && app.status !== 'rejected' && (
-                                  <button
-                                    onClick={() => handleOpenGenerateOffer(app)}
-                                    className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 hover:brightness-110 text-[11px] font-bold text-white shadow transition-all"
-                                  >
-                                    Issue Offer
-                                  </button>
-                                )}
+                                  {/* Issue Offer button */}
+                                  {app.status !== 'offer_issued' && app.status !== 'rejected' && (
+                                    <button
+                                      onClick={() => handleOpenGenerateOffer(app)}
+                                      className="min-h-[34px] px-3 py-1 rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 hover:brightness-110 text-[11px] font-bold text-white shadow active:scale-95 transition-all"
+                                    >
+                                      Issue Offer
+                                    </button>
+                                  )}
 
-                                {app.offerLetterId && (
-                                  <button
-                                    onClick={() => {
-                                      const letter = offerLetters.find(l => l.id === app.offerLetterId || l.applicationId === app.id);
-                                      if (letter) setViewingOfferLetter(letter);
-                                    }}
-                                    className="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-[11px] font-semibold text-emerald-400"
-                                  >
-                                    View Letter
-                                  </button>
-                                )}
+                                  {app.offerLetterId && (
+                                    <button
+                                      onClick={() => {
+                                        const letter = offerLetters.find(l => l.id === app.offerLetterId || l.applicationId === app.id);
+                                        if (letter) setViewingOfferLetter(letter);
+                                      }}
+                                      className="min-h-[34px] px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-[11px] font-semibold text-emerald-400 active:scale-95 transition-all"
+                                    >
+                                      View Letter
+                                    </button>
+                                  )}
+                                </div>
                               </td>
                             </tr>
                           ))}

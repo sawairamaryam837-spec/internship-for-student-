@@ -81,46 +81,46 @@ export const CandidateDashboard: React.FC = () => {
     }
   };
 
+  const [mobileKanbanStage, setMobileKanbanStage] = useState<'all' | 'applied' | 'screening' | 'interview' | 'offer'>('all');
+
   return (
-    <div className="py-8 pb-20">
+    <div className="py-6 sm:py-8 pb-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Candidate Profile Header Card */}
-        <div className="rounded-2xl border border-purple-900/30 bg-[#0e101b]/95 p-6 backdrop-blur-md mb-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-purple-700 to-indigo-600 text-2xl font-bold text-white shadow-lg shadow-purple-900/30">
+        <div className="rounded-2xl border border-purple-900/30 bg-[#0e101b]/95 p-4 sm:p-6 backdrop-blur-md mb-6 sm:mb-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div className="flex items-center gap-3.5 sm:gap-4">
+              <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-purple-700 to-indigo-600 text-xl sm:text-2xl font-bold text-white shadow-lg shadow-purple-900/30 shrink-0">
                 {currentUser.name.charAt(0)}
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h1 className="font-display text-2xl font-bold text-white">{currentUser.name}</h1>
-                  <span className="rounded-md border border-purple-800/40 bg-purple-950/60 px-2 py-0.5 text-[11px] font-mono text-purple-300">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h1 className="font-display text-xl sm:text-2xl font-bold text-white truncate">{currentUser.name}</h1>
+                  <span className="rounded-md border border-purple-800/40 bg-purple-950/60 px-2 py-0.5 text-[10px] sm:text-[11px] font-mono text-purple-300">
                     Candidate Portal
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">{currentUser.headline || 'Software Engineering Fellow'}</p>
-                <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 mt-2">
-                  <span>{currentUser.email}</span>
-                  <span aria-hidden="true">·</span>
-                  <span>{currentUser.university || 'University of Engineering & Tech'}</span>
-                  <span aria-hidden="true">·</span>
-                  <span>{currentUser.degree || 'B.S. in Computer Science'}</span>
+                <p className="text-xs text-slate-400 mt-0.5 truncate">{currentUser.headline || 'Software Engineering Fellow'}</p>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-slate-400 mt-1.5">
+                  <span className="truncate">{currentUser.email}</span>
+                  <span aria-hidden="true" className="hidden sm:inline">·</span>
+                  <span className="truncate hidden sm:inline">{currentUser.university || 'University of Engineering & Tech'}</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5 sm:gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-purple-950/60">
               <button
                 onClick={() => setIsProfileModalOpen(true)}
-                className="rounded-xl border border-purple-900/40 bg-[#131627] hover:bg-[#191c32] hover:border-purple-600/50 px-4 py-2 text-xs font-semibold text-slate-200 transition-colors"
+                className="flex-1 md:flex-initial min-h-[42px] rounded-xl border border-purple-900/40 bg-[#131627] hover:bg-[#191c32] hover:border-purple-600/50 px-4 py-2 text-xs font-semibold text-slate-200 transition-colors text-center active:scale-95"
               >
                 Edit Profile & CV
               </button>
               <button
                 onClick={() => setActiveTab('explore')}
-                className="rounded-xl bg-purple-600 hover:bg-purple-500 px-4 py-2 text-xs font-semibold text-white transition-colors shadow-md shadow-purple-900/30"
+                className="flex-1 md:flex-initial min-h-[42px] rounded-xl bg-purple-600 hover:bg-purple-500 px-4 py-2 text-xs font-semibold text-white transition-colors shadow-md shadow-purple-900/30 text-center active:scale-95"
               >
-                Browse New Roles
+                Browse Roles
               </button>
             </div>
           </div>
@@ -132,35 +132,35 @@ export const CandidateDashboard: React.FC = () => {
             <div className="text-xs font-semibold uppercase tracking-wider text-purple-400 mb-1">
               Applyr Pipeline
             </div>
-            <h2 className="font-display text-2xl font-bold text-white tracking-tight">
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">
               Job Application Tracker
             </h2>
           </div>
 
-          {/* Top KPI Cards from screenshot 3 */}
-          <div className="flex items-center gap-3">
-            <div className="rounded-xl border border-purple-900/30 bg-[#101220] px-4 py-2 min-w-[90px]">
-              <div className="font-mono text-lg font-bold text-white tabular-nums">{activeCount}</div>
-              <div className="text-[10px] text-slate-400">Active Roles</div>
+          {/* Top KPI Cards from screenshot 3 - responsive 3-col on phones */}
+          <div className="grid grid-cols-3 sm:flex items-center gap-2 sm:gap-3">
+            <div className="rounded-xl border border-purple-900/30 bg-[#101220] px-3 sm:px-4 py-2 text-center sm:text-left">
+              <div className="font-mono text-base sm:text-lg font-bold text-white tabular-nums">{activeCount}</div>
+              <div className="text-[10px] text-slate-400 truncate">Active Roles</div>
             </div>
-            <div className="rounded-xl border border-purple-900/30 bg-[#101220] px-4 py-2 min-w-[110px]">
-              <div className="font-mono text-lg font-bold text-amber-400 tabular-nums">{interviewsCount}</div>
-              <div className="text-[10px] text-slate-400">Interviews This Week</div>
+            <div className="rounded-xl border border-purple-900/30 bg-[#101220] px-3 sm:px-4 py-2 text-center sm:text-left">
+              <div className="font-mono text-base sm:text-lg font-bold text-amber-400 tabular-nums">{interviewsCount}</div>
+              <div className="text-[10px] text-slate-400 truncate">Interviews</div>
             </div>
-            <div className="rounded-xl border border-purple-900/30 bg-[#101220] px-4 py-2 min-w-[100px]">
-              <div className="font-mono text-lg font-bold text-emerald-400 tabular-nums">{offersCount}</div>
-              <div className="text-[10px] text-slate-400">Official Offers</div>
+            <div className="rounded-xl border border-purple-900/30 bg-[#101220] px-3 sm:px-4 py-2 text-center sm:text-left">
+              <div className="font-mono text-base sm:text-lg font-bold text-emerald-400 tabular-nums">{offersCount}</div>
+              <div className="text-[10px] text-slate-400 truncate">Offers</div>
             </div>
           </div>
         </div>
 
-        {/* View Switcher segmented buttons */}
-        <div className="flex items-center gap-2 mb-6 border-b border-purple-950/60 pb-3">
+        {/* View Switcher segmented buttons - Scrollable on mobile */}
+        <div className="flex items-center gap-2 mb-6 border-b border-purple-950/60 pb-3 overflow-x-auto scrollbar-none">
           <button
             onClick={() => setActiveViewTab('pipeline')}
-            className={`px-4 py-1.5 text-xs font-medium rounded-lg transition-all ${
+            className={`min-h-[42px] px-4 py-2 text-xs font-medium rounded-xl whitespace-nowrap transition-all active:scale-95 ${
               activeViewTab === 'pipeline'
-                ? 'bg-purple-600/30 text-purple-300 border border-purple-500/50 shadow-sm'
+                ? 'bg-purple-600/30 text-purple-300 border border-purple-500/50 shadow-sm font-semibold'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -168,9 +168,9 @@ export const CandidateDashboard: React.FC = () => {
           </button>
           <button
             onClick={() => setActiveViewTab('timeline')}
-            className={`px-4 py-1.5 text-xs font-medium rounded-lg transition-all ${
+            className={`min-h-[42px] px-4 py-2 text-xs font-medium rounded-xl whitespace-nowrap transition-all active:scale-95 ${
               activeViewTab === 'timeline'
-                ? 'bg-purple-600/30 text-purple-300 border border-purple-500/50 shadow-sm'
+                ? 'bg-purple-600/30 text-purple-300 border border-purple-500/50 shadow-sm font-semibold'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -178,9 +178,9 @@ export const CandidateDashboard: React.FC = () => {
           </button>
           <button
             onClick={() => setActiveViewTab('saved')}
-            className={`px-4 py-1.5 text-xs font-medium rounded-lg transition-all ${
+            className={`min-h-[42px] px-4 py-2 text-xs font-medium rounded-xl whitespace-nowrap transition-all active:scale-95 ${
               activeViewTab === 'saved'
-                ? 'bg-purple-600/30 text-purple-300 border border-purple-500/50 shadow-sm'
+                ? 'bg-purple-600/30 text-purple-300 border border-purple-500/50 shadow-sm font-semibold'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -188,11 +188,39 @@ export const CandidateDashboard: React.FC = () => {
           </button>
         </div>
 
+        {/* Mobile Stage Filter for Kanban Board (hidden on desktop lg) */}
+        {activeViewTab === 'pipeline' && (
+          <div className="lg:hidden flex items-center gap-1.5 overflow-x-auto pb-3 mb-4 scrollbar-none">
+            <span className="text-[11px] font-medium text-slate-400 shrink-0">Stage:</span>
+            {[
+              { id: 'all', label: 'All Columns' },
+              { id: 'applied', label: `Applied (${appliedApps.length})` },
+              { id: 'screening', label: `Screening (${screeningApps.length})` },
+              { id: 'interview', label: `Interview (${interviewApps.length})` },
+              { id: 'offer', label: `Offers (${offerApps.length})` }
+            ].map(col => (
+              <button
+                key={col.id}
+                onClick={() => setMobileKanbanStage(col.id as any)}
+                className={`min-h-[36px] px-3 py-1 text-xs rounded-lg transition-colors whitespace-nowrap shrink-0 border ${
+                  mobileKanbanStage === col.id
+                    ? 'border-purple-500 bg-purple-950/80 text-purple-300 font-semibold'
+                    : 'border-purple-950/40 bg-[#121422] text-slate-400'
+                }`}
+              >
+                {col.label}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* View 1: Applyr Kanban Board (matching screenshot #3) */}
         {activeViewTab === 'pipeline' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {/* Column 1: Applied */}
-            <div className="rounded-2xl border border-purple-950/60 bg-[#0c0e17]/90 p-4">
+            <div className={`rounded-2xl border border-purple-950/60 bg-[#0c0e17]/90 p-4 ${
+              mobileKanbanStage !== 'all' && mobileKanbanStage !== 'applied' ? 'hidden lg:block' : ''
+            }`}>
               <div className="flex items-center justify-between pb-3 mb-3 border-b border-purple-950/60">
                 <span className="font-display text-xs font-bold text-slate-200">Applied</span>
                 <span className="font-mono text-xs text-purple-400 px-2 py-0.5 rounded-full bg-purple-950/60 border border-purple-900/40">
@@ -232,7 +260,9 @@ export const CandidateDashboard: React.FC = () => {
             </div>
 
             {/* Column 2: Screening */}
-            <div className="rounded-2xl border border-purple-950/60 bg-[#0c0e17]/90 p-4">
+            <div className={`rounded-2xl border border-purple-950/60 bg-[#0c0e17]/90 p-4 ${
+              mobileKanbanStage !== 'all' && mobileKanbanStage !== 'screening' ? 'hidden lg:block' : ''
+            }`}>
               <div className="flex items-center justify-between pb-3 mb-3 border-b border-purple-950/60">
                 <span className="font-display text-xs font-bold text-slate-200">Screening & Review</span>
                 <span className="font-mono text-xs text-blue-400 px-2 py-0.5 rounded-full bg-blue-950/60 border border-blue-900/40">
@@ -272,7 +302,9 @@ export const CandidateDashboard: React.FC = () => {
             </div>
 
             {/* Column 3: Interview */}
-            <div className="rounded-2xl border border-purple-950/60 bg-[#0c0e17]/90 p-4">
+            <div className={`rounded-2xl border border-purple-950/60 bg-[#0c0e17]/90 p-4 ${
+              mobileKanbanStage !== 'all' && mobileKanbanStage !== 'interview' ? 'hidden lg:block' : ''
+            }`}>
               <div className="flex items-center justify-between pb-3 mb-3 border-b border-purple-950/60">
                 <span className="font-display text-xs font-bold text-slate-200">Interview</span>
                 <span className="font-mono text-xs text-amber-400 px-2 py-0.5 rounded-full bg-amber-950/60 border border-amber-900/40">
@@ -318,7 +350,9 @@ export const CandidateDashboard: React.FC = () => {
             </div>
 
             {/* Column 4: Offer */}
-            <div className="rounded-2xl border border-purple-950/60 bg-[#0c0e17]/90 p-4">
+            <div className={`rounded-2xl border border-purple-950/60 bg-[#0c0e17]/90 p-4 ${
+              mobileKanbanStage !== 'all' && mobileKanbanStage !== 'offer' ? 'hidden lg:block' : ''
+            }`}>
               <div className="flex items-center justify-between pb-3 mb-3 border-b border-purple-950/60">
                 <span className="font-display text-xs font-bold text-slate-200">Offer Issued</span>
                 <span className="font-mono text-xs text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-900/40">

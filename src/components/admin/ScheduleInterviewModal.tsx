@@ -42,14 +42,15 @@ export const ScheduleInterviewModal: React.FC = () => {
           </div>
           <button
             onClick={() => setScheduleInterviewApp(null)}
-            className="p-1.5 rounded-lg border border-purple-900/40 bg-[#141728] text-slate-400 hover:text-white"
+            aria-label="Close schedule interview"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-purple-900/40 bg-[#141728] text-slate-400 hover:text-white active:scale-95 transition-all"
           >
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label className="block text-slate-300 font-medium mb-1">Interview Date *</label>
               <input
@@ -57,7 +58,7 @@ export const ScheduleInterviewModal: React.FC = () => {
                 value={date}
                 onChange={e => setDate(e.target.value)}
                 required
-                className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+                className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none"
               />
             </div>
             <div>
@@ -68,7 +69,7 @@ export const ScheduleInterviewModal: React.FC = () => {
                 onChange={e => setTime(e.target.value)}
                 placeholder="14:00 - 14:45 EST"
                 required
-                className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+                className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none"
               />
             </div>
           </div>
@@ -80,7 +81,7 @@ export const ScheduleInterviewModal: React.FC = () => {
               value={roundName}
               onChange={e => setRoundName(e.target.value)}
               required
-              className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+              className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none"
             />
           </div>
 
@@ -91,7 +92,7 @@ export const ScheduleInterviewModal: React.FC = () => {
               value={interviewer}
               onChange={e => setInterviewer(e.target.value)}
               required
-              className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+              className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none"
             />
           </div>
 
@@ -102,7 +103,7 @@ export const ScheduleInterviewModal: React.FC = () => {
               value={meetLink}
               onChange={e => setMeetLink(e.target.value)}
               required
-              className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+              className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none"
             />
           </div>
 
@@ -112,21 +113,21 @@ export const ScheduleInterviewModal: React.FC = () => {
               rows={2}
               value={notes}
               onChange={e => setNotes(e.target.value)}
-              className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+              className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs text-white focus:border-purple-500 focus:outline-none"
             />
           </div>
 
-          <div className="pt-3 border-t border-purple-950/80 flex items-center justify-end gap-3">
+          <div className="pt-3 border-t border-purple-950/80 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3">
             <button
               type="button"
               onClick={() => setScheduleInterviewApp(null)}
-              className="rounded-xl border border-purple-900/40 bg-[#141728] px-4 py-2 text-slate-300 hover:text-white"
+              className="min-h-[44px] rounded-xl border border-purple-900/40 bg-[#141728] px-4 py-2.5 text-slate-300 hover:text-white active:scale-95 transition-all text-center"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="rounded-xl bg-purple-600 hover:bg-purple-500 px-5 py-2 font-semibold text-white shadow-md transition-colors"
+              className="min-h-[44px] rounded-xl bg-purple-600 hover:bg-purple-500 px-5 py-2.5 font-semibold text-white shadow-md active:scale-95 transition-all text-center"
             >
               Confirm & Email Candidate
             </button>

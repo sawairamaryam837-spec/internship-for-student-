@@ -77,13 +77,13 @@ export const EmailLogsModal: React.FC = () => {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
       <div className="relative w-full max-w-4xl my-8 rounded-2xl border border-purple-900/60 bg-[#0c0d16] text-slate-200 shadow-2xl shadow-purple-950/70 overflow-hidden">
         {/* Header */}
-        <div className="border-b border-purple-950/80 bg-[#121422] p-5 flex items-center justify-between">
+        <div className="border-b border-purple-950/80 bg-[#121422] p-4 sm:p-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-purple-950 text-purple-400 border border-purple-800/40">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-950 text-purple-400 border border-purple-800/40 shrink-0">
               <Mail className="h-5 w-5" />
             </div>
             <div>
-              <h2 className="font-display text-lg font-bold text-white">
+              <h2 className="font-display text-base sm:text-lg font-bold text-white">
                 Nodemailer Dispatch & Notification Center
               </h2>
               <p className="text-xs text-slate-400">
@@ -92,21 +92,21 @@ export const EmailLogsModal: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="flex items-center rounded-xl bg-[#17192c] border border-purple-900/40 p-1 text-xs">
+          <div className="flex items-center justify-between sm:justify-end gap-2">
+            <div className="flex items-center rounded-xl bg-[#17192c] border border-purple-900/40 p-1 text-xs w-full sm:w-auto">
               <button
                 onClick={() => setActiveTab('outbox')}
-                className={`px-3 py-1 rounded-lg font-medium transition-all ${
+                className={`flex-1 sm:flex-initial min-h-[38px] px-3.5 py-1.5 rounded-lg font-medium transition-all ${
                   activeTab === 'outbox'
                     ? 'bg-purple-600 text-white font-semibold'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                Dispatched Outbox ({emailNotifications.length})
+                Outbox ({emailNotifications.length})
               </button>
               <button
                 onClick={() => setActiveTab('smtp')}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-medium transition-all ${
+                className={`flex-1 sm:flex-initial min-h-[38px] flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg font-medium transition-all ${
                   activeTab === 'smtp'
                     ? 'bg-purple-600 text-white font-semibold'
                     : 'text-slate-400 hover:text-white'
@@ -119,7 +119,8 @@ export const EmailLogsModal: React.FC = () => {
 
             <button
               onClick={() => setIsEmailLogOpen(false)}
-              className="p-1.5 rounded-xl border border-purple-900/40 bg-[#16182a] text-slate-400 hover:text-white"
+              aria-label="Close notification center"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-purple-900/40 bg-[#16182a] text-slate-400 hover:text-white active:scale-95 transition-all shrink-0"
             >
               <X className="h-5 w-5" />
             </button>
@@ -230,7 +231,7 @@ export const EmailLogsModal: React.FC = () => {
                     onChange={e => setHost(e.target.value)}
                     required
                     placeholder="e.g. smtp.sendgrid.net"
-                    className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+                    className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -240,7 +241,7 @@ export const EmailLogsModal: React.FC = () => {
                     value={port}
                     onChange={e => setPort(Number(e.target.value))}
                     required
-                    className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none font-mono"
+                    className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none font-mono"
                   />
                 </div>
               </div>
@@ -253,7 +254,7 @@ export const EmailLogsModal: React.FC = () => {
                     value={user}
                     onChange={e => setUser(e.target.value)}
                     required
-                    className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+                    className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -263,7 +264,7 @@ export const EmailLogsModal: React.FC = () => {
                     value={fromEmail}
                     onChange={e => setFromEmail(e.target.value)}
                     required
-                    className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+                    className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -274,23 +275,23 @@ export const EmailLogsModal: React.FC = () => {
                   type="text"
                   value={fromName}
                   onChange={e => setFromName(e.target.value)}
-                  className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2 text-white focus:border-purple-500 focus:outline-none"
+                  className="w-full rounded-xl border border-purple-900/40 bg-[#121422] px-3.5 py-2.5 text-base sm:text-xs min-h-[44px] text-white focus:border-purple-500 focus:outline-none"
                 />
               </div>
 
-              <div className="pt-2 flex items-center justify-between">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={handleSendTestEmail}
-                  className="flex items-center gap-1.5 rounded-xl border border-purple-700/50 bg-[#16182c] px-4 py-2 font-medium text-purple-300 hover:text-white hover:bg-purple-900/40 transition-colors"
+                  className="min-h-[44px] flex items-center justify-center gap-1.5 rounded-xl border border-purple-700/50 bg-[#16182c] px-4 py-2.5 font-medium text-purple-300 hover:text-white hover:bg-purple-900/40 active:scale-95 transition-all text-center"
                 >
-                  <Send className="h-3.5 w-3.5" />
+                  <Send className="h-4 w-4" />
                   <span>Send Test Email</span>
                 </button>
 
                 <button
                   type="submit"
-                  className="rounded-xl bg-purple-600 hover:bg-purple-500 px-6 py-2 font-semibold text-white shadow-md transition-colors"
+                  className="min-h-[44px] rounded-xl bg-purple-600 hover:bg-purple-500 px-6 py-2.5 font-semibold text-white shadow-md active:scale-95 transition-all text-center"
                 >
                   Save SMTP Settings
                 </button>

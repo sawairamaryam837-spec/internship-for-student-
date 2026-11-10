@@ -106,10 +106,13 @@ export const DomainGrid: React.FC<DomainGridProps> = ({ onSelectInternship, onAp
                     </div>
                     <button
                       onClick={() => toggleSaveInternship(internship.id)}
-                      className={`p-1 rounded-md transition-colors ${
-                        isSaved ? 'text-purple-400' : 'text-slate-400 hover:text-white'
+                      className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors border ${
+                        isSaved
+                          ? 'border-purple-600/50 bg-purple-950/60 text-purple-400'
+                          : 'border-purple-950/40 bg-[#121422] text-slate-400 hover:text-white'
                       }`}
                       title={isSaved ? 'Remove from Saved' : 'Save Internship'}
+                      aria-label="Bookmark Internship"
                     >
                       <Bookmark className="h-4 w-4" fill={isSaved ? 'currentColor' : 'none'} />
                     </button>
@@ -146,7 +149,7 @@ export const DomainGrid: React.FC<DomainGridProps> = ({ onSelectInternship, onAp
                   </div>
                 </div>
 
-                {/* Card Footer */}
+                {/* Card Footer with touch-safe separation */}
                 <div className="pt-4 border-t border-purple-950/60 flex items-center justify-between gap-3">
                   <div className="text-xs text-slate-400">
                     <div className="text-slate-400 text-[10px]">Stipend & Duration</div>
@@ -158,16 +161,16 @@ export const DomainGrid: React.FC<DomainGridProps> = ({ onSelectInternship, onAp
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => onSelectInternship(internship)}
-                      className="px-2.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white transition-colors"
+                      className="min-h-[38px] px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white rounded-lg hover:bg-purple-950/30 active:scale-95 transition-colors"
                     >
                       Details
                     </button>
                     <button
                       onClick={() => onApplyInternship(internship)}
-                      className="flex items-center gap-1 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 border border-purple-500/40 px-3 py-1.5 text-xs font-semibold text-purple-200 transition-all"
+                      className="flex min-h-[38px] items-center gap-1.5 rounded-xl bg-purple-600/40 hover:bg-purple-600 border border-purple-500/50 px-3.5 py-1.5 text-xs font-semibold text-purple-200 hover:text-white active:scale-95 transition-all"
                     >
                       <span>Apply</span>
-                      <ArrowRight className="h-3 w-3" />
+                      <ArrowRight className="h-3.5 w-3.5" />
                     </button>
                   </div>
                 </div>

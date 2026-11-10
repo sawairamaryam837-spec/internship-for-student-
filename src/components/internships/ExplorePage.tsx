@@ -153,12 +153,13 @@ export const ExplorePage: React.FC<ExplorePageProps> = ({ initialSearchQuery = '
                   setCurrentPage(1);
                 }}
                 placeholder="Search domain title, keywords, or skills..."
-                className="w-full rounded-xl border border-purple-900/40 bg-[#141728] pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-400 focus:border-purple-500 focus:outline-none transition-colors"
+                className="w-full min-h-[44px] rounded-xl border border-purple-900/40 bg-[#141728] pl-10 pr-12 py-2.5 text-base sm:text-xs text-white placeholder-slate-400 focus:border-purple-500 focus:outline-none transition-colors"
               />
               {search && (
                 <button
                   onClick={() => setSearch('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
+                  aria-label="Clear Search"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 min-h-[32px] px-2 text-xs font-semibold text-slate-400 hover:text-white"
                 >
                   Clear
                 </button>
@@ -174,7 +175,7 @@ export const ExplorePage: React.FC<ExplorePageProps> = ({ initialSearchQuery = '
                   setCurrentPage(1);
                 }}
                 aria-label="Filter by duration"
-                className="w-full rounded-xl border border-purple-900/40 bg-[#141728] px-3 py-2.5 text-xs text-slate-200 focus:border-purple-500 focus:outline-none"
+                className="w-full min-h-[44px] rounded-xl border border-purple-900/40 bg-[#141728] px-3.5 py-2.5 text-base sm:text-xs text-slate-200 focus:border-purple-500 focus:outline-none"
               >
                 <option value="all">Any Duration</option>
                 <option value="1 month">1 Month</option>
@@ -193,7 +194,7 @@ export const ExplorePage: React.FC<ExplorePageProps> = ({ initialSearchQuery = '
                   setCurrentPage(1);
                 }}
                 aria-label="Filter by location mode"
-                className="w-full rounded-xl border border-purple-900/40 bg-[#141728] px-3 py-2.5 text-xs text-slate-200 focus:border-purple-500 focus:outline-none"
+                className="w-full min-h-[44px] rounded-xl border border-purple-900/40 bg-[#141728] px-3.5 py-2.5 text-base sm:text-xs text-slate-200 focus:border-purple-500 focus:outline-none"
               >
                 <option value="all">Any Work Mode</option>
                 <option value="remote">Remote Only</option>
@@ -202,13 +203,13 @@ export const ExplorePage: React.FC<ExplorePageProps> = ({ initialSearchQuery = '
               </select>
             </div>
 
-            {/* Sort Selector */}
+            {/* Sort Selector & Reset Button */}
             <div className="md:col-span-3 flex gap-2">
               <select
                 value={sortBy}
                 onChange={e => setSortBy(e.target.value as any)}
                 aria-label="Sort internships"
-                className="w-full rounded-xl border border-purple-900/40 bg-[#141728] px-3 py-2.5 text-xs text-slate-200 focus:border-purple-500 focus:outline-none"
+                className="w-full min-h-[44px] rounded-xl border border-purple-900/40 bg-[#141728] px-3.5 py-2.5 text-base sm:text-xs text-slate-200 focus:border-purple-500 focus:outline-none"
               >
                 <option value="newest">Sort: Newest First</option>
                 <option value="deadline">Sort: Application Deadline</option>
@@ -219,7 +220,8 @@ export const ExplorePage: React.FC<ExplorePageProps> = ({ initialSearchQuery = '
                 <button
                   onClick={handleResetFilters}
                   title="Reset all filters"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-purple-900/40 bg-[#141728] text-slate-300 hover:text-white hover:border-purple-500 transition-colors"
+                  aria-label="Reset all filters"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-purple-900/40 bg-[#141728] text-slate-300 hover:text-white hover:border-purple-500 active:scale-95 transition-colors"
                 >
                   <RotateCcw className="h-4 w-4" />
                 </button>
@@ -381,16 +383,16 @@ export const ExplorePage: React.FC<ExplorePageProps> = ({ initialSearchQuery = '
                   </div>
 
                   {/* Card Actions */}
-                  <div className="pt-4 border-t border-purple-950/60 flex items-center justify-between gap-3">
+                  <div className="pt-4 border-t border-purple-950/60 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
                     <button
                       onClick={() => setSelectedInternship(internship)}
-                      className="text-xs font-medium text-slate-300 hover:text-white transition-colors"
+                      className="min-h-[40px] px-3 py-2 text-xs font-medium text-slate-300 hover:text-white transition-colors text-center sm:text-left rounded-lg hover:bg-purple-950/20 active:scale-95"
                     >
                       View Details & Curriculum
                     </button>
                     <button
                       onClick={() => setApplyInternship(internship)}
-                      className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:brightness-110 px-4 py-2 text-xs font-semibold text-white shadow-md shadow-purple-900/30 transition-all shrink-0"
+                      className="flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:brightness-110 px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-purple-900/30 active:scale-[0.98] transition-all shrink-0"
                     >
                       <span>Apply Now</span>
                       <ArrowRight className="h-3.5 w-3.5" />
